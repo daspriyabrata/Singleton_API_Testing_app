@@ -49,6 +49,7 @@ class Zomato_API_BOT:
                     _case_level_report['result'] = result[0]
                     print(str(test_details) + result[0] + ' with reason ' + result[1])
                 self.report['test_cases'].append(_case_level_report)
+                _response.close()
         self.report['end_time'] = datetime.datetime.utcnow()
         print(HtmlReport.report_builder(self.report))
         print("Total time elapsed {}".format(str(self.report['end_time'] - self.report['start_time'])))
