@@ -1,0 +1,108 @@
+categories:
+     tc1:
+        tc_type: status_code
+        status_code: 200
+     tc2:
+        tc_type: field_present
+        field_name: categories[0].categories.id
+     tc3:
+        tc_type: field_value
+        categories[0].categories.id: 1
+     tc4:
+        tc_type: performance
+        time_limit: 0.5
+     tc5:
+        tc_type: header_params_check
+        content-type: application/json
+cities:
+      tc1:
+        tc_type: status_code
+        status_code: 200
+        query_params:
+          q: New York
+
+      tc2:
+        tc_type: field_present
+        field_name: location_suggestions[0].id
+        query_params:
+          q: New York
+
+      tc3:
+        tc_type: field_value
+        location_suggestions[0].id: 280
+        query_params:
+          q: New York
+      tc4:
+        tc_type: performance
+        time_limit: 0.5
+        query_params:
+          q: New York
+
+      tc5:
+        tc_type: header_params_check
+        content-type: application/json
+        query_params:
+          q: New York
+
+
+      tc6:
+        tc_type: status_code
+        status_code: 200
+        query_params:
+          city_ids: 280
+
+      tc7:
+        tc_type: field_value
+        status: success
+        query_params:
+          city_ids: 280
+
+      tc8:
+        tc_type: field_value
+        location_suggestions[0].name: New York City, NY
+        query_params:
+          q: New York
+      tc9:
+        tc_type: field_value
+        user_has_addresses: true
+        query_params:
+          city_ids: 280
+
+      tc10:
+        tc_type: header_params_check
+        content-encoding: gzip
+        query_params:
+          lat: 40.742051
+          lon: -74.004821
+
+      tc11:
+        tc_type: field_value
+        location_suggestions[0].name: New York City, NY
+        query_params:
+          lat: 40.742051
+          lon: -74.004821
+
+locations:
+    tc1:
+      tc_type: status_code
+      status_code: 200
+      query_params:
+        query: Chelsea Market
+
+    tc2:
+      tc_type: field_value
+      status: success
+      query_params:
+        query: Chelsea Market
+
+location_details:
+    tc1:
+      tc_type: status_code
+      status_code: 200
+      is_dependent: 1
+      depedent_api: locations
+      dependent_test_case: tc1
+      dependant_component: query_params
+      query_params:
+          entity_type: location_suggestions[0].entity_type
+          entity_id: location_suggestions[0].entity_id

@@ -1,0 +1,4 @@
+PyYAML
+configparser
+requests
+benedict

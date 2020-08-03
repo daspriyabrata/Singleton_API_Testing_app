@@ -1,0 +1,3 @@
+test_config:
+  base_url: https://developers.zomato.com/api/v2.1/
+  user_key: f939f2b4471637306efaeac29979a405

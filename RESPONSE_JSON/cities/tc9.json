@@ -1,0 +1,23 @@
+{
+    "location_suggestions": [
+        {
+            "id": 280,
+            "name": "New York City, NY",
+            "country_id": 216,
+            "country_name": "United States",
+            "country_flag_url": "https://b.zmtcdn.com/images/countries/flags/country_216.png",
+            "should_experiment_with": 0,
+            "has_go_out_tab": 0,
+            "discovery_enabled": 1,
+            "has_new_ad_format": 0,
+            "is_state": 0,
+            "state_id": 103,
+            "state_name": "New York State",
+            "state_code": "NY"
+        }
+    ],
+    "status": "success",
+    "has_more": 0,
+    "has_total": 0,
+    "user_has_addresses": true
+}

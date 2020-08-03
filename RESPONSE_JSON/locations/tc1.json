@@ -1,0 +1,19 @@
+{
+    "location_suggestions": [
+        {
+            "entity_type": "group",
+            "entity_id": 36932,
+            "title": "Chelsea Market, Chelsea, New York City",
+            "latitude": 40.742051,
+            "longitude": -74.004821,
+            "city_id": 280,
+            "city_name": "New York City",
+            "country_id": 216,
+            "country_name": "United States"
+        }
+    ],
+    "status": "success",
+    "has_more": 0,
+    "has_total": 0,
+    "user_has_addresses": true
+}
