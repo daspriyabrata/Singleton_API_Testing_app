@@ -9,7 +9,7 @@ from HTML_Report.html_reports import HtmlReport
 logger = logging.getLogger(__name__)
 
 
-class Zomato_API_BOT:
+class ZomatoAPITest:
     def __init__(self, settings, test_cases):
         self._settings = settings
         self._test_cases = test_cases
