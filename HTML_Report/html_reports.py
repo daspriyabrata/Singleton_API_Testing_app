@@ -2,8 +2,11 @@ import os
 
 
 class HtmlReport:
+    def __init__(self):
+        pass
+
     @staticmethod
-    def html_report(start_time, duration, summary, table_body):
+    def __html_report(start_time, duration, summary, table_body):
         html_template = """
                 <!DOCTYPE html>
     <html>
@@ -60,8 +63,7 @@ class HtmlReport:
     </html>"""
         return html_template
 
-    @staticmethod
-    def report_builder(test_results):
+    def report_builder(self, test_results):
         body_template = """<tr class={0}>
                                     <td class="col-xs-10">{1}</td>
                                     <td class="col-xs-1">
@@ -99,7 +101,7 @@ class HtmlReport:
         duration = end_time - start_time
         summary = "Total: {0}, Pass: {1}, Fail: {2}".format(str(_total), str(_pass), str(_fail))
         with open(os.getcwd() + '/API_TEST_REPORT.html', 'w') as _html_file:
-            _html_file.write(HtmlReport.html_report(str(start_time), str(duration), summary, table_body))
+            _html_file.write(self.__html_report(str(start_time), str(duration), summary, table_body))
             _html_file.close()
 
         return summary
