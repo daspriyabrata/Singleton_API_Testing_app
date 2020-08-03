@@ -2,7 +2,7 @@
 import logging
 import os
 import json
-from lib.api_bot import Zomato_API_BOT
+from app_lib.api_bot import Zomato_API_BOT
 from utils.config import config_parser
 from utils.Singleton import ZOmato_API_Factory
 from utils.test_case import test_case_parser
