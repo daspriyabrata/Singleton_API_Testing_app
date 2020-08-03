@@ -18,10 +18,10 @@ class TestRunner:
             assert response.status_code == int(kwargs.get('status_code'))
             return 'Passed'
         except AssertionError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Status Code is: ' + str(response.status_code)
         except TypeError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Type Error' + str(type(response.status_code)) + ' and ' + \
                    str(type(kwargs.get('status_code'))) + ' are not same.'
 
@@ -32,8 +32,7 @@ class TestRunner:
             assert kwargs.get('field_name') in _resp_str
             return 'Passed'
         except KeyError:
-            print(kwargs.get('field_name') + ' is not present.')
-            logger.error(kwargs.get('field_name') + ' is not present.')
+            logger.info(kwargs.get('field_name') + ' is not present.')
             return 'Failed', kwargs.get('field_name') + ' is not present.'
 
     @staticmethod
@@ -45,10 +44,10 @@ class TestRunner:
             assert _resp_json[_assert_field] == _assert_value
             return 'Passed'
         except KeyError:
-            logger.error(_assert_field + ' is not present.')
+            logger.info(_assert_field + ' is not present.')
             return 'Failed', _assert_field + ' is not present.'
         except ValueError:
-            logger.error(_assert_field + 'does not have value as' + _assert_value)
+            logger.info(_assert_field + 'does not have value as' + _assert_value)
             return 'Faied', _assert_field + 'does not have value as' + _assert_value
 
     @staticmethod
@@ -57,10 +56,10 @@ class TestRunner:
             assert response.elapsed.total_seconds() < float(kwargs.get('time_limit'))
             return 'Passed'
         except AssertionError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Time Taken is: ' + str(response.elapsed.total_seconds())
         except TypeError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Type Error' + str(type(response.status_code)) + ' and ' + \
                    str(type(kwargs.get('status_code'))) + ' are not same.'
 
@@ -71,10 +70,10 @@ class TestRunner:
             assert response.headers[header_param] == kwargs.get(header_param)
             return 'Passed'
         except AssertionError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Header Param did not match'
         except TypeError as e:
-            logger.error(e)
+            logger.info(e)
             return 'Failed', 'Type Error' + str(type(response.status_code)) + ' and ' + \
                    str(type(kwargs.get('status_code'))) + ' are not same.'
 

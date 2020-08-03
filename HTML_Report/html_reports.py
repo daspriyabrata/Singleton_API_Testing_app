@@ -1,7 +1,10 @@
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-class HtmlReport:
+class HtmlReportBuilder:
     def __init__(self):
         pass
 
@@ -63,7 +66,7 @@ class HtmlReport:
     </html>"""
         return html_template
 
-    def report_builder(self, test_results):
+    def get_report(self, **kwargs):
         body_template = """<tr class={0}>
                                     <td class="col-xs-10">{1}</td>
                                     <td class="col-xs-1">
@@ -80,7 +83,7 @@ class HtmlReport:
                                 </tr>"""
         table_body = """"""
         _pass, _fail = 0, 0
-        for _report in test_results['test_cases']:
+        for _report in kwargs['test_cases']:
             if _report['result'] == 'Pass':
                 _cls = 'success'
                 _sts = 'Pass'
@@ -96,12 +99,11 @@ class HtmlReport:
             table_body = table_body + body_template.format(_cls, _report['summary'], _cls, _sts, _col, _text,
                                                            _report['response_json_loc'])
         _total = _pass + _fail
-        start_time = test_results['start_time']
-        end_time = test_results['end_time']
+        start_time = kwargs['start_time']
+        end_time = kwargs['end_time']
         duration = end_time - start_time
         summary = "Total: {0}, Pass: {1}, Fail: {2}".format(str(_total), str(_pass), str(_fail))
         with open(os.getcwd() + '/API_TEST_REPORT.html', 'w') as _html_file:
             _html_file.write(self.__html_report(str(start_time), str(duration), summary, table_body))
             _html_file.close()
-
-        return summary
+        logger.info(summary)

@@ -3,6 +3,7 @@ from requests.adapters import HTTPAdapter
 from requests.exceptions import ConnectionError, HTTPError
 import logging
 
+logger = logging.getLogger(__name__)
 
 class HttpRequests:
     def __init__(self, base_url, api_key):
@@ -17,13 +18,13 @@ class HttpRequests:
             try:
                 return session.get(headers=self.header, url=self.url + api_name, params=query_param, timeout=(2, 5))
             except ConnectionError as ce:
-                logging.error(ce)
+                logger.info(ce)
             except HTTPError as he:
-                logging.error(he)
+                logger.info(he)
         else:
             try:
                 return session.get(headers=self.header, url=self.url + api_name, timeout=(2, 5))
             except ConnectionError as ce:
-                logging.error(ce)
+                logger.info(ce)
             except HTTPError as he:
-                logging.error(he)
+                logger.info(he)

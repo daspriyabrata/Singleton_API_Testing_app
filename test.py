@@ -15,9 +15,8 @@ def main():
     # Store the settings
     api_factory.settings = json.loads(config_parser(os.getcwd() + '/data/config.yml').replace("\'", "\""))
     # Create a logger
-    if os.path.exists(os.getcwd() + '/api_requests.log'):
-        os.remove('api_requests.log')
-    api_factory.log = logging.basicConfig(filename='api_requests.log', filemode='x')
+    format = "%(asctime)s: %(message)s"
+    api_factory.log = logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
 
     api_factory.test_cases = test_case_parser(os.getcwd() + '/data/test_case.yml')
 
