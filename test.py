@@ -2,7 +2,7 @@
 import logging
 import os
 import json
-from app_lib.apito import Zomato_API_Test
+from app_lib.apittest import ZomatoAPITest
 from utils.config import config_parser
 from utils.Singleton import ZOmato_API_Factory
 from utils.test_case import test_case_parser
@@ -22,7 +22,7 @@ def main():
     api_factory.test_cases = test_case_parser(os.getcwd() + '/data/test_case.yml')
 
     # The zomato api bot itself
-    api_factory.test_runner = Zomato_API_Test(api_factory.settings, api_factory.test_cases)
+    api_factory.test_runner = ZomatoAPITest(api_factory.settings, api_factory.test_cases)
 
     return api_factory
 
