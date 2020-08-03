@@ -2,7 +2,7 @@
 # Editors
 .vscode/
 .idea/
-
+.gitignore
 # Vagrant
 .vagrant/
 
@@ -17,6 +17,8 @@ Thumbs.db
 >>>>>>> 9f2dde53a0ae08f16dbb187d05b8363dd8f06e11
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.idea/
+./__pyxache__/
 *.py[cod]
 *$py.class
 
