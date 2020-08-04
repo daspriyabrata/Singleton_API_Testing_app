@@ -60,8 +60,8 @@ class TestRunner:
             return 'Failed', 'Time Taken is: ' + str(response.elapsed.total_seconds())
         except TypeError as e:
             logger.info(e)
-            return 'Failed', 'Type Error' + str(type(response.status_code)) + ' and ' + \
-                   str(type(kwargs.get('status_code'))) + ' are not same.'
+            return 'Failed', 'Type Error' + str(type(response.elapsed.total_seconds())) + ' and ' + \
+                   str(type(kwargs.get('time_limit'))) + ' are not same.'
 
     @staticmethod
     def header_params_check(response, **kwargs):

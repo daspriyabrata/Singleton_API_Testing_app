@@ -35,20 +35,23 @@ class ZomatoAPITest:
                     query_params = test_details.get('query_params')
                 else:
                     query_params = None
-                _response = self._http_request_generator.get_details(api, query_params)
-                _resp_json_loc = _json_registry.write_response_json_files(_response, _test_case_id)
-                _case_level_report.update({'response_json_loc': _resp_json_loc})
-                result = _test_runner(_response, **test_details)
-                if result == 'Passed':
-                    _case_level_report['test_detail'] = test_details
-                    _case_level_report['result'] = 'Pass'
-                    logger.info(str(test_details) + ' Passed')
-                else:
-                    _case_level_report['failure_reason'] = result[1]
-                    _case_level_report['result'] = result[0]
-                    logger.info(str(test_details) + result[0] + ' with reason ' + result[1])
-                self.report['test_cases'].append(_case_level_report)
-                _response.close()
+                try:
+                    _response = self._http_request_generator.get_details(api, query_params)
+                    _resp_json_loc = _json_registry.write_response_json_files(_response, _test_case_id)
+                    _case_level_report.update({'response_json_loc': _resp_json_loc})
+                    result = _test_runner(_response, **test_details)
+                    if result == 'Passed':
+                        _case_level_report['test_detail'] = test_details
+                        _case_level_report['result'] = 'Pass'
+                        logger.info(str(test_details) + ' Passed')
+                    else:
+                        _case_level_report['failure_reason'] = result[1]
+                        _case_level_report['result'] = result[0]
+                        logger.info(str(test_details) + result[0] + ' with reason ' + result[1])
+                    self.report['test_cases'].append(_case_level_report)
+                    _response.close()
+                except TimeoutError as te:
+                    logger.info(te)
         self.report['end_time'] = datetime.datetime.utcnow()
         _test_builder = HtmlReportBuilder()
         _test_builder.get_report(**self.report)

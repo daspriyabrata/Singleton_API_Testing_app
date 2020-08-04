@@ -78,7 +78,7 @@ class HtmlReportBuilder:
                                 </tr>
                                 <tr style="display:none;">
                                     <td class="col-xs-9" colspan="3"><p style="color:{4};">{5}</p>
-                                    <p style="color: 'blue';">{6}</p>
+                                    <a href="./RESPONSE_JSON/{6}">Response Json</a>
                                     </td>
                                 </tr>"""
         table_body = """"""
@@ -106,4 +106,5 @@ class HtmlReportBuilder:
         with open(os.getcwd() + '/API_TEST_REPORT.html', 'w') as _html_file:
             _html_file.write(self.__html_report(str(start_time), str(duration), summary, table_body))
             _html_file.close()
+
         logger.info(summary)
