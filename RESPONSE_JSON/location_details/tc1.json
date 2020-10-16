@@ -497,9 +497,9 @@
                             "tint": "700"
                         }
                     },
-                    "votes": 58
+                    "votes": 57
                 },
-                "all_reviews_count": 23,
+                "all_reviews_count": 22,
                 "photos_url": "https://www.zomato.com/new-york-city/giovanni-rana-pastificio-cucina-chelsea/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
                 "photo_count": 71,
                 "menu_url": "https://www.zomato.com/new-york-city/giovanni-rana-pastificio-cucina-chelsea/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
@@ -571,10 +571,10 @@
                 "highlights": [
                     "Credit Card",
                     "No Alcohol Available",
-                    "Desserts and Bakes",
                     "Indoor Seating",
-                    "Kid Friendly",
-                    "Private Parking"
+                    "Desserts and Bakes",
+                    "Private Parking",
+                    "Kid Friendly"
                 ],
                 "offers": [],
                 "opentable_support": 0,

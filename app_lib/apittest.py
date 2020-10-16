@@ -5,6 +5,7 @@ from utils.test_case import TestRunner
 from utils.json_writer import ResponseJsonWriter
 from utils.dependency_manager import DependencyManager
 from HTML_Report.html_reports import HtmlReportBuilder
+from utils.print_formatter import bcolors
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +23,7 @@ class ZomatoAPITest:
         self.report['test_cases'] = []
         for api in list(self._test_cases.keys()):
             _json_registry.create_response_repository(api)
-            logger.info('Testing for {} api'.format(api))
+            logger.info(f'{bcolors.OKBLUE}{bcolors.BOLD}Testing for {api} api{bcolors.ENDC}')
             for test_case in list(self._test_cases[api].keys()):
                 _test_case_id = test_case
                 _case_level_report = {'summary': api + ' ' + _test_case_id}
@@ -43,11 +44,11 @@ class ZomatoAPITest:
                     if result == 'Passed':
                         _case_level_report['test_detail'] = test_details
                         _case_level_report['result'] = 'Pass'
-                        logger.info(str(test_details) + ' Passed')
+                        logger.info(f'{bcolors.OKGREEN} {str(test_details)} Passed{bcolors.ENDC}')
                     else:
                         _case_level_report['failure_reason'] = result[1]
                         _case_level_report['result'] = result[0]
-                        logger.info(str(test_details) + result[0] + ' with reason ' + result[1])
+                        logger.info(f'{bcolors.FAIL} {str(test_details)} {result[0]} with reason {result[1]}{bcolors.ENDC}')
                     self.report['test_cases'].append(_case_level_report)
                     _response.close()
                 except TimeoutError as te:
@@ -55,5 +56,5 @@ class ZomatoAPITest:
         self.report['end_time'] = datetime.datetime.utcnow()
         _test_builder = HtmlReportBuilder()
         _test_builder.get_report(**self.report)
-        logger.info("Total time elapsed {}".format(str(self.report['end_time'] - self.report['start_time'])))
-        logger.info('Test Run Finished')
+        logger.info(f"{bcolors.WARNING}{bcolors.BOLD}Total time elapsed {str(self.report['end_time'] - self.report['start_time'])}{bcolors.ENDC}")
+        logger.info(f'{bcolors.WARNING}{bcolors.BOLD}Test Run Finished{bcolors.ENDC}')

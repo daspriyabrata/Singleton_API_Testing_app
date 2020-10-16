@@ -4,14 +4,14 @@ import os
 import json
 from app_lib.apittest import ZomatoAPITest
 from utils.config import config_parser
-from utils.Singleton import ZOmato_API_Factory
+from utils.Singleton import Zomato_API_Factory
 from utils.test_case import test_case_parser
 
 
 def main():
     # Create the singleton class to map all objects
     # Makes writing plugins easier
-    api_factory = ZOmato_API_Factory()
+    api_factory = Zomato_API_Factory()
     # Store the settings
     api_factory.settings = json.loads(config_parser(os.getcwd() + '/data/config.yml').replace("\'", "\""))
     # Create a logger

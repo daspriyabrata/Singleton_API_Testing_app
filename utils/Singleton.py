@@ -5,6 +5,6 @@ class Borg:
         self.__dict__ = self._shared_state
 
 
-class ZOmato_API_Factory(Borg):
+class Zomato_API_Factory(Borg):
     def __init__(self):
         Borg.__init__(self)

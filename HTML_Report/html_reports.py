@@ -1,6 +1,6 @@
 import os
 import logging
-
+from utils.print_formatter import bcolors
 logger = logging.getLogger(__name__)
 
 
@@ -107,4 +107,4 @@ class HtmlReportBuilder:
             _html_file.write(self.__html_report(str(start_time), str(duration), summary, table_body))
             _html_file.close()
 
-        logger.info(summary)
+        logger.info(f'{bcolors.BOLD}{bcolors.WARNING}{summary}{bcolors.ENDC}')
