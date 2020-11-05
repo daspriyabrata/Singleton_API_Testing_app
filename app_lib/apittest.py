@@ -48,7 +48,8 @@ class ZomatoAPITest:
                     else:
                         _case_level_report['failure_reason'] = result[1]
                         _case_level_report['result'] = result[0]
-                        logger.info(f'{bcolors.FAIL} {str(test_details)} {result[0]} with reason {result[1]}{bcolors.ENDC}')
+                        logger.info(f'{bcolors.FAIL} {str(test_details)} '
+                                    f'{result[0]} with reason {result[1]}{bcolors.ENDC}')
                     self.report['test_cases'].append(_case_level_report)
                     _response.close()
                 except TimeoutError as te:
@@ -56,5 +57,6 @@ class ZomatoAPITest:
         self.report['end_time'] = datetime.datetime.utcnow()
         _test_builder = HtmlReportBuilder()
         _test_builder.get_report(**self.report)
-        logger.info(f"{bcolors.WARNING}{bcolors.BOLD}Total time elapsed {str(self.report['end_time'] - self.report['start_time'])}{bcolors.ENDC}")
+        logger.info(f"{bcolors.WARNING}{bcolors.BOLD}Total time elapsed "
+                    f"{str(self.report['end_time']-self.report['start_time'])}{bcolors.ENDC}")
         logger.info(f'{bcolors.WARNING}{bcolors.BOLD}Test Run Finished{bcolors.ENDC}')
