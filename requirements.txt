@@ -1,5 +1,4 @@
 PyYAML
 configparser
 requests
-benedict
-json
+python-benedict
