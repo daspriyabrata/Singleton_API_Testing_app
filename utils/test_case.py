@@ -48,7 +48,7 @@ class TestRunner:
             return 'Failed', _assert_field + ' is not present.'
         except ValueError:
             logger.info(_assert_field + 'does not have value as' + _assert_value)
-            return 'Faied', _assert_field + 'does not have value as' + _assert_value
+            return 'Failed', _assert_field + 'does not have value as' + _assert_value
 
     @staticmethod
     def performance(response, **kwargs):

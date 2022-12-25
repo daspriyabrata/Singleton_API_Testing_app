@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class HttpRequests:
     def __init__(self, base_url, api_key):
         self.url = base_url
@@ -13,7 +14,7 @@ class HttpRequests:
     def get_details(self, api_name, query_param=None):
         session = Session()
         Zomato_adapter = HTTPAdapter(max_retries=3)
-        session.mount(self.url+api_name, Zomato_adapter)
+        session.mount(self.url + api_name, Zomato_adapter)
         if query_param:
             try:
                 return session.get(headers=self.header, url=self.url + api_name, params=query_param, timeout=(2, 5))
